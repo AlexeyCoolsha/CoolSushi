@@ -1,0 +1,166 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.slider {
+    // box-sizing: border-box;
+    margin: 0 auto;
+    height: 20vw;
+    width: 100%;
+}
+.swiper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    &-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 10px;
+        border: none;
+        border-radius: 8px;
+        background-color: #fff;
+        box-shadow: -1px 1px 16px 0 rgba(140, 140, 140, 0.15);
+        cursor: pointer;
+        transition: .2s;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 3;
+            &_left {
+                left: 0;
+            }
+            &_right {
+                right: 0;
+            }
+            &:hover {
+                background-color:  rgba(29, 29, 29, 0.7);
+                color: #fff;
+        }
+    }
+    &-wrapper {
+        box-sizing: content-box;
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        height: 100%;
+        transition: .2s ease-out;
+    }
+    &-slide {
+        flex-shrink: 0;
+        height: auto;
+        background-color: lightblue;
+        width: 0;
+        border-radius: 8px;
+        &_active {
+            height: auto;
+        }
+        & .slide {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            overflow: visible;
+            & img {
+                width: 100%;
+                height: auto;
+                max-height: 100%;
+                object-fit: contain;
+                border-radius: 8px;
+            }
+        }
+    }
+    &-rings {
+        display: flex;
+        gap: 10px;  
+        position: absolute;
+        left: 50%;
+        bottom: 5%;
+        transform: translateX(-50%);
+        z-index: 3;
+        & .ring {
+            position: relative;
+            height: 20px;
+            width: 20px;
+            border-radius: 10px;
+            border: 2px solid #fff;
+            cursor: pointer;
+            &-active::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 10px;
+                height: 10px;
+                border-radius: 50px;
+                background-color: #fff;
+            }
+        }
+    }
+}
+@media screen and (max-width: 1500px) {
+    .swiper-rings .ring {
+        width: 15px;
+        height: 15px;
+        border-radius: 7.5px;
+        &-active::before {
+            width: 7.5px;
+            height: 7.5px;
+        }
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .swiper-btn {
+        font-size: 7px;
+        border-radius: 6px;
+        width: 30px;
+        height: 30px;
+    }
+    .swiper-rings .ring {
+        width: 10px;
+        height: 10px;
+        border: 1px solid #fff;
+        &-active::before {
+            width: 5px;
+            height: 5px;
+        }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .slider {
+        height: 33vw;
+    }
+    .swiper-rings {
+        bottom: 8%;
+        gap: 7px;
+    }
+}
+@media screen and (max-width: 480px) {
+    .swiper-rings {
+        display: none;
+        gap: 5px;
+    }
+    .swiper-rings .ring {
+        width: 7px;
+        height: 7px;
+        &-active::before {
+            width: 3px;
+            height: 3px;
+        }
+    }
+    .swiper-btn {
+        font-size: 6px;
+        border-radius: 3px;
+        width: 20px;
+        height: 20px;
+    }
+}
+
+

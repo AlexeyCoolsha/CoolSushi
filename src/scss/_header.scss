@@ -1,0 +1,146 @@
+
+.header {
+    width: 100%;
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+        border-bottom: solid 0.8px rgba(29, 29, 29, 0.07);
+        &-left{
+            width: 50%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
+}
+
+.city-link {
+    color: c.$primaryTextColor;
+    border-bottom: 1px dashed c.$lightGray;
+    text-align: left;
+    padding: 0 0.5rem 0.2rem 0;
+}
+
+.menu {
+    display: flex;
+    gap: 8rem;
+    & i {
+        font-size: 1.8rem;
+    }
+}
+
+.menu-mobile {
+    display: none;
+    height: 100vh;
+    width: 50vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    flex-direction: column;
+    align-items: start;
+    background-color: c.$primaryBackgroundColor;
+    border-right: 2px solid black;
+    z-index: 3;
+    &-top {
+        display: flex;
+        justify-content: space-between;
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(29, 29, 29, 0.07);
+    }
+    &-logo {
+        width: 10rem;
+        & img {
+            width: 100%;
+        }
+    }
+    &-content {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.menu-item {
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid rgba(29, 29, 29, 0.07);
+    & i {
+        margin-right: 2rem;
+    }
+}
+
+
+.logo {
+    transform: translateX(50%);
+    img {
+        height: 65px;
+    }
+}
+
+.header-nav {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+}
+
+.crown {
+    color: gold;
+    margin-right: 0.5rem;
+}
+
+@media screen and (max-width: 1119px) {
+    .menu {
+        gap: 5rem;
+    }
+}
+
+@media screen and (max-width: 899px) {
+    .menu {
+        gap: 2.5rem;
+    }
+    .header__bottom {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+    }
+    .header-nav {
+        justify-content: start;
+        gap: 2rem;
+        overflow-x: scroll;
+        &::-webkit-scrollbar {
+            width: 50%;
+            height: 0.5rem;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: linear-gradient(90deg, transparent, #1d1d1d);
+            border-radius: 8px;
+        }
+        &::-webkit-scrollbar-track {
+            background-color: #3e3e3e3b;
+            border-radius: 8px;
+            width: 50%;
+        }
+    }
+}
+
+@media screen and (max-width: 599px) {
+    .header__top {
+        &-left {
+           flex-direction: row-reverse;
+        }
+        & .logo {
+            transform: translateX(-50%);
+        }
+    }
+    .menu {
+        display: none;
+        &-mobile {
+            display: block;
+        }
+    }
+    .btn-menu {
+        display: block;
+        padding-left: 0;
+    }
+}
+

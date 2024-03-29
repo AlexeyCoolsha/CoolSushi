@@ -1,0 +1,301 @@
+@use "./vars" as c;
+@import "./header";
+@import "./normalize";
+@import "../assets/fonts/fontawesome-free-6.5.1-web/css/all.min.css";
+@import "./buttons";
+@import "./swiper";
+@import "./footer";
+@font-face {
+  font-family: Inter;
+  src: url(../assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+body {
+  font-family: "Inter", "Arial Narrow", Arial, sans-serif;
+  color: c.$primaryTextColor;
+  background-color: c.$primaryBackgroundColor;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 1592px;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.swiper .wrapper {
+  position: relative;
+  transform: translateY(-100%);
+  & .swiper-btn_left {
+    transform: translateX(50%);
+  }
+  & .swiper-btn_right {
+    transform: translateX(-50%);
+  }
+}
+
+.upper {
+  text-transform: uppercase;
+}
+
+.disabled {
+  display: none;
+}
+
+.title {
+  font-size: 3.2rem;
+  font-weight: bold;
+  line-height: 1.38;
+  margin-bottom: 3rem;
+  color: c.$primaryTextColor;
+  &-work {
+    color: c.$primaryTextColor;
+    line-height: 1.42;
+    font-size: 2.4rem;
+    font-weight: 700;
+  }
+}
+
+.slider {
+  margin: 0 auto;
+}
+
+.product-grid {
+  margin-bottom: 5.6rem;
+}
+.product-grid__inner {
+  display: grid;
+  // grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6rem;
+}
+.product {
+  position: relative;
+  // max-width: 37.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.8rem;
+  box-shadow: 8px 8px 16px #75768425;
+  &-text {
+    padding: 2.4rem;
+    & .description {
+      font-size: 1.5rem;
+      line-height: 1.61;
+      margin-bottom: 1.6rem;
+    }
+    & .name {
+      & a {
+        font-size: 1.6rem;
+        color: c.$secondaryTextColor;
+        text-transform: uppercase;
+        padding: 5px 10px 5px 0;
+      }
+      margin-bottom: 1.4rem;
+    }
+    & .composition {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      font-size: 1.4rem;
+      color: c.$lightGray;
+      margin-bottom: 2.9rem;
+    }
+  }
+  &-img__cont {
+    width: 100%;
+    // height: 250px;
+  }
+  &-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+  }
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & .price {
+      display: flex;
+      align-items: center;
+      flex-direction: row;
+      &-current {
+        color: c.$productPrimaryColor;
+        font-size: 1.73rem;
+        margin-right: 1.6rem;
+      }
+      &-previous {
+        font-size: 1.43rem;
+        text-decoration: line-through;
+      }
+    }
+  }
+  & .tags {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    & .tag {
+      color: c.$primaryBackgroundColor;
+      font-size: 1.4rem;
+      padding: 0.4rem 0.8rem;
+      margin-bottom: 0.8rem;
+      border-radius: 0.4rem;
+      &-new {
+        background-color: #2452d4;
+      }
+      &-promo {
+        background-color: #e60000;
+      }
+      &-persons {
+        background-color: #2faf00;
+      }
+      &-mini {
+        background-color: #f43c7f;
+      }
+      &-hit {
+        background-color: #a447af;
+      }
+      &-baked {
+        background-color: #d2691e;
+      }
+      &-spicy {
+        background-color: #f95e5e;
+      }
+    }
+  }
+}
+
+.story {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-left: 0.8px solid #d4d7db;
+  padding-left: 3rem;
+  margin-bottom: 8.8rem;
+  &__inner {
+    max-width: 95.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  &-text {
+    color: rgba(29, 29, 29, 0.5);
+    line-height: 2.1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
+  &-title {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2.4rem;
+    text-decoration: underline;
+    margin: 3rem 0;
+    font-weight: 400;
+  }
+  &-list_item {
+    position: relative;
+    color: rgba(29, 29, 29, 0.5);
+    line-height: 2.1rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    list-style: none;
+    margin: 1rem 0;
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: -2rem;
+      width: 2px;
+      height: 2px;
+      background-color: rgba(29, 29, 29, 0.5);
+      border-radius: 5px;
+    }
+  }
+}
+.work-offer {
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 4rem;
+    border-radius: 8px;
+    box-shadow: 8px 8px 16px 0 rgba(117, 118, 132, 0.15);
+    background-image: linear-gradient(91deg, #f3f9ff 0%, #fff5ec 100%);
+    margin-bottom: 5rem;
+  }
+  &__par {
+    line-height: 1.42;
+    font-size: 2.4rem;
+  }
+}
+
+@media screen and (max-width: 1499px) {
+  .product-grid__inner {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 1159px) {
+  .price {
+    flex-direction: column !important;
+    align-items: start !important;
+    &-current {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .product-grid__inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .price {
+    flex-direction: row !important;
+    align-items: center !important;
+    &-current {
+      margin-right: 1.6rem !important;
+    }
+  }
+}
+
+@media screen and (max-width: 749px) {
+  // .product-grid__inner {
+  //     grid-template-columns: repeat(1, 1fr);
+  //     gap: 1.6rem;
+  // }
+  .price {
+    flex-direction: column !important;
+    align-items: start !important;
+    &-current {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .product-grid__inner {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .price {
+    flex-direction: row !important;
+    align-items: center !important;
+    &-current {
+      margin-right: 1.6rem !important;
+    }
+  }
+}
