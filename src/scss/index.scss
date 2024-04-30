@@ -1,8 +1,8 @@
 @use "./vars" as c;
+@import "./buttons";
 @import "./header";
 @import "./normalize";
 @import "../assets/fonts/fontawesome-free-6.5.1-web/css/all.min.css";
-@import "./buttons";
 @import "./swiper";
 @import "./footer";
 @font-face {
@@ -130,7 +130,7 @@ body {
       align-items: center;
       flex-direction: row;
       &-current {
-        color: c.$productPrimaryColor;
+        color: c.$PrimaryColor;
         font-size: 1.73rem;
         margin-right: 1.6rem;
       }
@@ -274,10 +274,6 @@ body {
 }
 
 @media screen and (max-width: 749px) {
-  // .product-grid__inner {
-  //     grid-template-columns: repeat(1, 1fr);
-  //     gap: 1.6rem;
-  // }
   .price {
     flex-direction: column !important;
     align-items: start !important;

@@ -1,95 +1,163 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import logo from "../../assets/img/coolSushiLogo/CoolSushiLogoNew.png";
 import { Link } from "react-router-dom";
-import HomePage from "../../pages/HomePage/HomePage";
+import Button from "../UI/Button/Button";
+import NavLink from "../UI/NavLink/NavLink";
+import MenuItem from "../UI/MenuItem/MenuItem";
 
 const Header = () => {
+  const [menuIsOpened, setMenuIsOpened] = useState(false);
+  function changeMenuState() {
+    setMenuIsOpened(!menuIsOpened);
+  }
+
+  useEffect(() => {
+    document.body.classList.toggle('body-noscroll');
+  }, [menuIsOpened])
+
   return (
-    <div class="wrapper">
-      <header class="header">
-        <div class="header__top">
-          <button class="btn btn-menu">
-            <i class="fa-solid fa-bars"></i>
-          </button>
-          <div class="menu-mobile">
-            <div class="menu-mobile-top">
-              <div class="menu-mobile-logo">
-                <img src={logo} alt="logo" class="logo-img" />
+    <div className="wrapper">
+      <header className="header">
+        <div
+          className={`menu-mobile__container ${
+            menuIsOpened ? " menu-mobile__container_active" : ""
+          }`}
+        >
+          <div
+            className="menu-mobile-background"
+            onClick={changeMenuState}
+          ></div>
+          <div className={`menu-mobile${menuIsOpened ? " menu-active" : ""}`}>
+            <div className="menu-mobile-top">
+              <div className="menu-mobile-logo">
+                <img src={logo} alt="logo" className="logo-img" />
               </div>
-              <button class="btn">
-                <i class="fa-solid fa-xmark"></i>
-              </button>
+              <Button
+                iconClass="fa-solid fa-xmark"
+                classModifier="cross"
+                eventHandler={changeMenuState}
+              />
             </div>
-            <div class="menu-mobile-content">
-              <div class="menu-item">
-                <button class="btn">
-                  <i class="fa-solid fa-location-dot"></i> Краснодар
-                </button>
-              </div>
-              <div class="menu-item">
-                <button class="btn">
-                  <i class="fa-regular fa-user"></i> Войти
-                </button>
-              </div>
-              <div class="menu-item">
-                <button class="btn btn-cart">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                </button>
-              </div>
-              <div class="menu-item"></div>
-              <div class="menu-item"></div>
+            <div className="menu-mobile-content">
+              <MenuItem
+                href="#"
+                iconClass="fa-solid fa-location-dot"
+                text="Краснодар"
+              ></MenuItem>
+              <MenuItem
+                href="#"
+                iconClass="fa-regular fa-user"
+                text="Войти"
+              ></MenuItem>
+              <MenuItem
+                href="#"
+                iconClass="fa-solid fa-book-open"
+                text="Меню"
+              ></MenuItem>
+              <MenuItem
+                href="#"
+                iconClass="fa-solid fa-bag-shopping"
+                text="Корзина"
+              ></MenuItem>
+              <MenuItem
+                href="#"
+                iconClass="fa-solid fa-fire"
+                text="Акции"
+              ></MenuItem>
             </div>
-          </div>
-          <div class="header__top-left">
-            <div class="city">
-              <Link to="#" class="btn link city-link">
-                Краснодар
-              </Link>
-            </div>
-            <div class="logo">
-              <Link to="/home" class="link">
-                <img src={logo} alt="logo" class="logo-img" />
-              </Link>
-            </div>
-          </div>
-          <div class="menu">
-            <button class="btn btn-search">
-              <i class="fa-solid fa-magnifying-glass"></i>
-            </button>
-            <button class="btn btn-login">
-              <i class="fa-regular fa-user"></i> Войти
-            </button>
-            <button class="btn btn-cart">
-              <i class="fa-solid fa-bag-shopping"></i>
-            </button>
           </div>
         </div>
-        <div class="header__bottom">
-          <nav class="header-nav" id="header-nav">
-            <Link to="#" class="btn link">
-              <i class="fa-solid fa-crown crown"></i>От шефа
+
+        <div className="header__top">
+          <Button
+            iconClass="fa-solid fa-bars"
+            classModifier="btn-menu"
+            eventHandler={changeMenuState}
+          />
+
+          <div className="city">
+            <i className="fa-solid fa-location-dot"></i>
+            <Link to="#" className="btn city-link">
+              Краснодар
             </Link>
-            <Link to="#" class="btn link">
-              Сеты
+          </div>
+
+          <div className="logo">
+            <Link to="/home" className="btn">
+              <img src={logo} alt="logo" className="logo-img" />
             </Link>
-            <Link to="#" class="btn link">
-              Роллы и суши
-            </Link>
-            <Link to="#" class="btn link">
-              WOK
-            </Link>
-            <Link to="#" class="btn link">
-              Горячее и салаты
-            </Link>
-            <Link to="#" class="btn link">
-              Десерты и напитки
-            </Link>
-            <Link to="#" class="btn link">
-              Дополнительно
-            </Link>
+          </div>
+
+          <div className="menu">
+            <Button
+              iconClass="fa-solid fa-magnifying-glass"
+              classModifier="btn-search"
+            />
+            <Button
+              iconClass="fa-regular fa-user"
+              text="Войти"
+              classModifier="btn-login"
+            />
+            <Button
+              iconClass="fa-solid fa-bag-shopping"
+              classModifier="btn-cart"
+            />
+          </div>
+        </div>
+
+        <div className="header__bottom">
+          <nav className="header-nav" id="header-nav">
+            <NavLink href="#">
+              <i className="fa-solid fa-crown crown"></i>От шефа
+            </NavLink>
+            <NavLink href="#">Сеты</NavLink>
+            <NavLink href="#">Роллы и суши</NavLink>
+            <NavLink href="#">WOK</NavLink>
+            <NavLink href="#">Горячее и салаты</NavLink>
+            <NavLink href="#">Десерты и напитки</NavLink>
+            <NavLink href="#">Дополнительно</NavLink>
           </nav>
         </div>
       </header>
+      <p>
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />
+        f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f<br />f
+        <br />f<br />f<br />
+      </p>
     </div>
   );
 };
